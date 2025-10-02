@@ -1,0 +1,11 @@
+package org.lesson.java.spring.spring_la_mia_pizzeria_crud.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+@RequestMapping("/pizza")
+public class PizzaController {
+    
+    
+}
