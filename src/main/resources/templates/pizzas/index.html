@@ -17,7 +17,16 @@
 
             <h1 class="py-4 text-center">Lista delle pizze</h1>
 
+                <form th:action="@{/pizzas/searchByName}" method="get"
+                class="d-flex" role="search">
+                    <input name="name" class="form-control me-2" type="search"  placeholder="Search" aria-label="Search"/>
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+
             <div class="col-12" th:if="${pizzas.size() > 0}">
+
+                
+                   
                   <table class="table table-striped">
                 <thead>
                     <tr>
@@ -36,7 +45,7 @@
                     <td th:text="*{description}"></td>
                     <td th:text="*{url}"></td>
                     <td th:text="*{price}"></td>
-                                        
+                    <td> <a th:href="@{/pizzas/{id}(id= *{id})}" class="btn btn-primary">Dettagli</a></td>                
                     </tr>
                   
                 </tbody>
