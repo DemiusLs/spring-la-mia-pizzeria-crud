@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <th:block th:replace="~{fragments/resources :: headTags}"></th:block>
+    <title>Pizzas</title>   
+</head>
+<body>
+    <header>
+        <th:block th:replace="~{fragments/fragment :: navbar}"></th:block>
+    </header>
+    
+    
+
+    <main>
+        <div class="container">
+
+            <h1 class="py-4 text-center">Lista delle pizze</h1>
+
+            <div class="col-12" th:if="${pizzas.size() > 0}">
+                  <table class="table table-striped">
+                <thead>
+                    <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">URL</th>
+                    <th scope="col">Price</th>
+                    
+                    
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr th:each="pizza : ${pizzas}" th:object="${pizza}">
+                    <td th:text="*{name}"></td>
+                    <td th:text="*{description}"></td>
+                    <td th:text="*{url}"></td>
+                    <td th:text="*{price}"></td>
+                                        
+                    </tr>
+                  
+                </tbody>
+            </table>
+            </div>
+
+            <div class="col-12" th:unless="${pizzas.size() > 0}" th:text="Non ci sono pizze disponibili al momento..."></div>
+
+          
+
+        </div>
+        
+
+    </main>
+
+    <footer>
+
+    </footer>
+
+    <th:block th:replace="~{fragments/resources :: scripts}"></th:block>
+</body>
+</html>
