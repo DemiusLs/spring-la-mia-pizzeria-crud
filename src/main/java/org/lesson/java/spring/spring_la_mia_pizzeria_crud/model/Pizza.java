@@ -9,6 +9,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 
 
@@ -22,12 +23,13 @@ public class Pizza {
     private Integer id;    
 
     @NotBlank(message = "The name can't be null, empty or blank")
+    @Size(min=1 ,max=50 , message = "The name size must be longer than 1 and shorter than 50")
     private String name;
-    @NotBlank(message = "The description
-    
-    can't be null, empty or blank")
+    @NotBlank(message = "The description can't be null, empty or blank")
+     @Size(min=10 ,max=150 , message = "The description size must be longer than 10 and shorter than 150")
     private String description;
     @NotBlank(message = "The url can't be null, empty or blank")
+     @Size(min=1 ,max=50 , message = "The url size must be longer than 1 and shorter than 50")
     private String url;
     @DecimalMin( value ="0.0", inclusive= false , message = "Price must be positive"  )
     private BigDecimal price;
