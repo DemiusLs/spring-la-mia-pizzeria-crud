@@ -23,7 +23,9 @@ public class Pizza {
 
     @NotBlank(message = "The name can't be null, empty or blank")
     private String name;
+    @NotBlank(message = "The description
     
+    can't be null, empty or blank")
     private String description;
     @NotBlank(message = "The url can't be null, empty or blank")
     private String url;
