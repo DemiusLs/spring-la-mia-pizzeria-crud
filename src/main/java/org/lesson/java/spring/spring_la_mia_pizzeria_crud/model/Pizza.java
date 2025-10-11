@@ -8,6 +8,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.NotBlank;
+
 
 
 @Entity
@@ -19,8 +21,11 @@ public class Pizza {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;    
 
+    @NotBlank(message = "The name can't be null, empty or blank")
     private String name;
+    
     private String description;
+    @NotBlank(message = "The url can't be null, empty or blank")
     private String url;
     @DecimalMin( value ="0.0", inclusive= false , message = "Price must be positive"  )
     private BigDecimal price;
