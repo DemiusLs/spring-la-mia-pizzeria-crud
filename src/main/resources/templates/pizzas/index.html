@@ -59,40 +59,43 @@
                     <td> <a th:href="@{/pizzas/{id}(id= *{id})}" class="btn btn-primary">Dettagli</a></td> 
                     <td> <a th:href="@{/pizzas/edit/{id}(id= *{id})}" class="btn btn-primary">Edit</a></td>
                     <td>
+                        <!-- Button trigger modal con ID dinamico -->
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" 
+                                th:data-bs-target="|#deleteModal${pizza.id}|">
+                            Delete
+                        </button>
 
-                        <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal-[[${pizza.id}]]">
-                    Delete
-                    </button>
-
-                    <!-- Modal -->
-                    <div class="modal fade" id="deleteModal-[[${pizza.id}]]" tabindex="-1" aria-labelledby="deleteModalLabel-[[${pizza.id}]]" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="deleteModalLabel-[[${pizza.id}]]">Conferme delete</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <!-- Modal con ID dinamico -->
+                        <div class="modal fade" th:id="|deleteModal${pizza.id}|" tabindex="-1" 
+                            aria-labelledby="deleteModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5">Conferma delete</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Are you really sure to delete <strong th:text="*{name}"></strong>?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <form th:action="@{/pizzas/delete/{id}(id=*{id})}" method="post">
+                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                        </form> 
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="modal-body">
-                            Are you really sure to delete [[${pizza.name}]]
-                        </div>
-                        <div class="modal-footer">
-
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-
-                            <form action="#" th:action="@{/pizzas/delete/{id}(id=${pizza.id})}" method="post">
-                            <button type="submit" class="btn btn-danger ">Delete</button>
-                            </form> 
-                        </div>
-                        </div>
-                    </div>
-                    </div>
-
                     </td>
 
                     </tr>
                   
                 </tbody>
+
+
+               
+            
+
             </table>
             </div>
 
